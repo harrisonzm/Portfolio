@@ -12,6 +12,8 @@ import {
   skillGroups,
 } from './data/profile';
 
+const assetPath = (fileName: string) => `${import.meta.env.BASE_URL}${fileName}`;
+
 const navItems = [
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
@@ -183,7 +185,7 @@ function Hero() {
             <a className="button button-primary" href="mailto:harrison.zmontoya@gmail.com">
               Contact me
             </a>
-            <a className="button button-secondary" href="/cv-en.pdf" target="_blank" rel="noreferrer">
+            <a className="button button-secondary" href={assetPath('cv-en.pdf')} target="_blank" rel="noreferrer">
               Download CV
             </a>
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noreferrer">
@@ -205,7 +207,7 @@ function Hero() {
             <a href={profile.github} target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a href="/profile.pdf" target="_blank" rel="noreferrer">
+            <a href={assetPath('profile.pdf')} target="_blank" rel="noreferrer">
               LinkedIn PDF
             </a>
           </div>
@@ -242,7 +244,7 @@ function Contact() {
           <a href={profile.linkedin} target="_blank" rel="noreferrer">
             LinkedIn Profile
           </a>
-          <a href="/cv-es.pdf" target="_blank" rel="noreferrer">
+          <a href={assetPath('cv-es.pdf')} target="_blank" rel="noreferrer">
             CV en español
           </a>
         </div>
