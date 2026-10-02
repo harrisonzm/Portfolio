@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+ <rect width="1200" height="630" fill="#f8f9f3"/>
+ <path d="M72 116h1056M72 526h1056" stroke="#dfe2d7"/>
+ <text x="72" y="85" font-family="Arial,sans-serif" font-size="45" font-weight="bold" letter-spacing="-5" fill="#28352c">hz.</text>
+ <text x="164" y="80" font-family="Arial,sans-serif" font-size="21" fill="#526748">Harrison Zuleta Montoya</text>
+ <text x="72" y="231" font-family="Arial,sans-serif" font-size="74" font-weight="bold" letter-spacing="-3" fill="#242a24">Ideas claras.</text>
+ <text x="72" y="323" font-family="Arial,sans-serif" font-size="74" font-weight="bold" letter-spacing="-3" fill="#242a24">Software que</text>
+ <text x="72" y="417" font-family="Georgia,serif" font-size="88" font-style="italic" letter-spacing="-3" fill="#526748">hace más.</text>
+ <rect x="823" y="170" width="270" height="278" rx="8" fill="#28352c"/>
+ <path d="m894 250-31 34 31 34m128-68 31 34-31 34m-42-91-29 115" fill="none" stroke="#d4ec9b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="858" y="397" font-family="Arial,sans-serif" font-size="21" fill="#d4ec9b">Full Stack &amp; AI Engineer</text>
+ <text x="72" y="576" font-family="Arial,sans-serif" font-size="22" fill="#526748">Desarrollo web · Automatizaciones · Agentes de IA</text>
+ <text x="970" y="576" font-family="Arial,sans-serif" font-size="21" fill="#526748">Colombia</text>
+</svg>
