@@ -4,6 +4,7 @@ import { profile } from "../data/profile";
 import { services } from "../data/portfolio";
 
 type Status = "idle" | "sending" | "success" | "error";
+const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT?.trim();
 const topics = [
   ...services.map((service) => service.subject),
   "Una oportunidad laboral",
@@ -39,7 +40,7 @@ export function ContactForm({
     setError("");
     try {
       const response = await fetch(
-        `https://formsubmit.co/ajax/${profile.email}`,
+        contactEndpoint || `https://formsubmit.co/ajax/${profile.email}`,
         {
           method: "POST",
           headers: {
@@ -82,7 +83,7 @@ export function ContactForm({
     <form
       className="contact-form"
       id="contact-form"
-      action={`https://formsubmit.co/${profile.email}`}
+      action={contactEndpoint || `https://formsubmit.co/${profile.email}`}
       method="POST"
       onSubmit={submit}
       aria-labelledby="form-title"
@@ -173,15 +174,11 @@ export function ContactForm({
         {status === "error" && error}
       </div>
       <p className="form-privacy">
-        El envío se procesa con{" "}
-        <a
-          href="https://formsubmit.co/privacy.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          FormSubmit
-        </a>{" "}
-        para hacerme llegar tu mensaje.
+        {contactEndpoint ? (
+          "Tu nombre, correo y mensaje se usan para responder a tu consulta."
+        ) : (
+          <>El envío se procesa con <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noreferrer">FormSubmit</a> para hacerme llegar tu mensaje.</>
+        )}
       </p>
     </form>
   );

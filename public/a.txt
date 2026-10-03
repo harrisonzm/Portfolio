@@ -1,0 +1,1039 @@
+metadata:
+  key: free-text-final-po-logistica-nuevos-cluster-prov
+  name: Free Text Final PO Logistica Nuevos Cluster Prov
+  knowledgeModelKey: testkg
+  liveView:
+    enabled: false
+  allowAICapabilities: true
+  showCaseCount: true
+  allowScheduledReports: true
+  allowAdvancedFilters: true
+  advancedFiltersSettings:
+    processFilter:
+      active: true
+    attributeFilter:
+      active: true
+    eventLogs: []
+grid:
+  elements:
+    - id: 234b94fb-d1a5-4708-94d3-f1ba5f917435
+      componentId: image-v2-233d7f9e-6675-4bca-9610-29f0c8016c08
+      position:
+        positionX: 1
+        positionY: 1
+        width: 4
+        height: 10
+    - id: ac523d1b-c870-448f-a2fb-bba4db5807d9
+      componentId: pie-chart-a8d98d01-3543-4715-8bee-43cb9653b8ea
+      position:
+        positionX: 1
+        positionY: 11
+        width: 12
+        height: 37
+    - id: 03190cfd-ede2-46d0-a22f-4359f7646255
+      componentId: table-55f790d8-dcea-435d-98fd-d85eacc87a92
+      position:
+        positionX: 25
+        positionY: 11
+        width: 12
+        height: 89
+    - id: 2e286d42-d657-466e-8616-3b18170e1840
+      componentId: input-dropdown-8240e09b-5371-475f-a267-d6daf5d45e0a
+      position:
+        positionX: 8
+        positionY: 12
+        width: 5
+        height: 5
+    - id: aba8d02b-281f-4964-b15e-379c8d42169f
+      componentId: button-1f44fe8c-4136-48b0-bad6-72be1fb191a4
+      position:
+        positionX: 13
+        positionY: 48
+        width: 12
+        height: 5
+    - id: 295bb34c-affc-4e09-a570-0144af62c8d5
+      componentId: pie-chart-bdf0058b-249e-4863-beaf-37a2e47373f7
+      position:
+        positionX: 1
+        positionY: 53
+        width: 12
+        height: 46
+    - id: f6cb4b1e-846f-42dc-a7d2-793599149cc0
+      componentId: bar-chart-d5f83fef-317c-4ce4-9cdc-12fa8eedd1ec
+      position:
+        positionX: 13
+        positionY: 53
+        width: 12
+        height: 46
+    - id: bb709b54-052c-4fed-be6f-a1b1e1a0b905
+      componentId: button-495d6ff9-1aab-4de6-ab2b-62e0921286b3
+      position:
+        positionX: 1
+        positionY: 48
+        width: 12
+        height: 5
+    - id: 4befc779-8de5-41f7-8811-0da1a8ab85ec
+      componentId: columns-line-chart-dc5da9e6-87c2-471c-9afe-562a7f6d841e
+      position:
+        positionX: 13
+        positionY: 11
+        width: 12
+        height: 37
+    - id: b696684a-58a5-4a82-8988-87c542256e3f
+      componentId: kpi-list-8e0a7484-e523-4467-b8ee-b329c319db27
+      position:
+        positionX: 32
+        positionY: 1
+        width: 5
+        height: 10
+    - id: 0176de80-69af-44e0-9039-396d607cb374
+      componentId: kpi-list-855e26a6-e87d-4de2-9f0d-f3397050752b
+      position:
+        positionX: 5
+        positionY: 1
+        width: 14
+        height: 10
+    - id: 7d288f5a-2c21-4c3b-91c2-49df0d550b1b
+      componentId: kpi-list-fc90f9c7-6f71-40a4-9d7a-43e05fa2d10a
+      position:
+        positionX: 19
+        positionY: 1
+        width: 13
+        height: 10
+  mode: scrollable
+  height: 800
+components:
+  - id: image-v2-233d7f9e-6675-4bca-9610-29f0c8016c08
+    type: image-v2
+    settings:
+      imageKey: bd8d74eb-0e88-437d-bda1-e34d05b0eb42
+      imageSource: gallery
+    filters: []
+  - id: pie-chart-a8d98d01-3543-4715-8bee-43cb9653b8ea
+    type: pie-chart
+    settings:
+      name: POLs Con agreement/Sin agreement
+      category:
+        - 8708c4b1-f90a-4d23-8323-646e911972c3
+        - 2a65ccc3-cf8f-48f4-80f8-7ac6bc670920
+      colorRule: PRIMARY
+      dataLabel: percentage
+      dataSources:
+        - id: f4153bdf-10e8-4324-94e9-1e6aae36a86c
+          displayName: f4153bdf-10e8-4324-94e9-1e6aae36a86c
+          shortDisplayName: ""
+          description: ""
+          attributes:
+            - id: 8708c4b1-f90a-4d23-8323-646e911972c3
+              columnType: ""
+              pql: |
+                CASE
+                WHEN PU_LAST ("o_celonis_PurchaseOrderLine","o_custom_FreetextvsAgreement"."Categoria") = 'LOGISTICA'
+                THEN 'Con posible agreement'
+                WHEN "o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog" IS NOT NULL
+                AND "o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog" <> 'ERROR:#N/A'
+                THEN 'Sin agreement'
+                ELSE 'Otro'
+                END
+              shortDisplayName: ""
+              description: ""
+              aggregation: false
+              displayName: Tipo de resolución
+              unit: ""
+              format: ""
+            - id: 2a65ccc3-cf8f-48f4-80f8-7ac6bc670920
+              columnType: ""
+              pql: |
+                ${dimensiones_vol_value.pql}
+              shortDisplayName: ""
+              description: ""
+              aggregation: false
+              displayName: Cantidad POL
+              unit: ""
+              format: ",.3~s"
+          filters:
+            - pql: logistica
+              isReferenced: true
+      additionalKpis: []
+      colorRuleField: 8708c4b1-f90a-4d23-8323-646e911972c3
+    filters: []
+  - id: table-55f790d8-dcea-435d-98fd-d85eacc87a92
+    type: table
+    settings:
+      data:
+        sortBy:
+          - id: 98e21683-fc28-4498-aae4-e22b38c71bdd
+            field: bb48fba3-f386-468f-ba25-2926d93fd77d
+            order: 100
+            direction: DESC
+          - id: 9f148a3a-0c6f-4bb4-a30b-147cd159d183
+            field: 07ce45cd-0864-435c-9381-e071af5b176e
+            order: 200
+            direction: DESC
+        columns:
+          - id: ffb7adf8-1f94-40c9-8fec-2ae5d52e09b0
+            field: 07ce45cd-0864-435c-9381-e071af5b176e
+            order: 100
+          - id: 5747be77-3d88-4f4e-aff6-61849b4f9b9e
+            field: bb48fba3-f386-468f-ba25-2926d93fd77d
+            order: 200
+          - id: 68201ae3-7deb-4e39-ae8b-72def0b5cc55
+            field: d81941bf-ca71-4acc-bd4e-0bb3c1543be0
+            order: 300
+        distinct: true
+        breakdownSelector:
+          columns:
+            - id: 5e77f1ea-e943-427b-a183-b07635436700
+              field: d682c51d-fd6d-4f48-a11f-996b15d76703
+              order: 100
+            - id: 08468e01-1595-439c-a6aa-079a87839040
+              field: 1d4c42b5-69be-46a3-aafd-bdcccf20c5a3
+              order: 200
+      options:
+        allowDataExport: true
+      dataSources:
+        - id: d705acb1-e584-4cb4-9407-5372c69de637
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: d682c51d-fd6d-4f48-a11f-996b15d76703
+              pql: |
+                "o_celonis_Vendor"."Name"
+              columnType: string
+              aggregation: false
+              description: ""
+              displayName: Proveedor
+              referencedEntity:
+                id: O_CELONIS_VENDOR.NAME
+                type: NATIVE_ATTRIBUTE
+                columnType: string
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+            - id: 1d4c42b5-69be-46a3-aafd-bdcccf20c5a3
+              pql: >
+                "o_celonis_PurchaseOrderLine"."Custom_PlantCode"||' -
+                '||"o_celonis_PurchaseOrderLine"."Custom_PlantName"
+              unit: ""
+              format: ""
+              columnType: string
+              aggregation: false
+              description: ""
+              displayName: Planta
+              shortDisplayName: ""
+            - id: 07ce45cd-0864-435c-9381-e071af5b176e
+              pql: |
+                COUNT (DISTINCT "o_celonis_PurchaseOrderLine"."Id")
+              unit: ""
+              format: ""
+              columnType: int
+              aggregation: true
+              description: ""
+              displayName: Cantidad de POL
+              shortDisplayName: ""
+            - id: bb48fba3-f386-468f-ba25-2926d93fd77d
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              displayName: Gasto Total FT (USD)
+              referencedEntity:
+                id: gasto_total_usd
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+            - id: d81941bf-ca71-4acc-bd4e-0bb3c1543be0
+              pql: |
+                KPI("ahorro_posible_agreement_cluster_")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: ahorro_posible_agreement_cluster_
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: d705acb1-e584-4cb4-9407-5372c69de637
+          shortDisplayName: ""
+    tools:
+      - id: action-tool
+        settings:
+          actions: []
+    filters: []
+  - id: input-dropdown-8240e09b-5371-475f-a267-d6daf5d45e0a
+    type: input-dropdown
+    settings:
+      fields:
+        - id: id-37b37f20-0f37-4f07-8073-97c37909cb6b
+          field: 3f15edf9-dac7-4f11-85af-a4d3dafb923a.b6491f28-f4ee-496b-b6fe-e096419f2ee9
+          order: 100
+        - id: id-9cc805a8-6bcd-4cd0-8460-59c2231af8b7
+          field: 8f82a357-f06d-41ef-88db-e747f149fe0c.0a22bfe4-6f30-4bf8-a61a-bca05c736e3e
+          order: 200
+      onChange:
+        update:
+          selection: single
+          variables:
+            - name: dimensiones_vol_value
+      dataSources:
+        - id: 3f15edf9-dac7-4f11-85af-a4d3dafb923a
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: b6491f28-f4ee-496b-b6fe-e096419f2ee9
+              pql: |
+
+                COUNT ( DISTINCT CASE WHEN
+                "o_celonis_PurchaseOrderLine"."Custom_MaterialNumber" IS NULL
+                THEN "o_celonis_PurchaseOrderLine"."Id" END )
+              unit: ""
+              format: ",.3~s"
+              columnType: int
+              aggregation: true
+              description: ""
+              displayName: Cantidad POLs
+              shortDisplayName: ""
+          description: ""
+          displayName: 3f15edf9-dac7-4f11-85af-a4d3dafb923a
+          shortDisplayName: ""
+        - id: 8f82a357-f06d-41ef-88db-e747f149fe0c
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: 0a22bfe4-6f30-4bf8-a61a-bca05c736e3e
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: gasto_total_usd
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: 8f82a357-f06d-41ef-88db-e747f149fe0c
+          shortDisplayName: ""
+    filters: []
+  - id: button-1f44fe8c-4136-48b0-bad6-72be1fb191a4
+    type: button
+    settings:
+      size: large
+      label: Investigar sin agreement
+      onClick:
+        openView:
+          viewKey: sin-agreement-po-logistica-v2-cluster-nuevos
+          variables: []
+          syncFilters: forward-only
+          openInSideOverlay: false
+      variant: primary
+    tools:
+      - id: action-tool
+        settings:
+          actions: []
+    filters: []
+  - id: pie-chart-bdf0058b-249e-4863-beaf-37a2e47373f7
+    type: pie-chart
+    settings:
+      kpi: 2eae5136-1d9d-497e-b6d8-461eecdb2ad9
+      name: "Cantidad POLs (Líneas) con posible negociación "
+      colors: PRIMARY
+      legend: label
+      category:
+        - b157804d-048d-4d45-9c49-2a8f7b6af095
+      colorRule: PRIMARY
+      dataSources:
+        - id: c18e78bf-653b-4e42-8c29-bd7c105ee5fb
+          filters:
+            - pql: cluster_logistica
+              isReferenced: true
+          attributes:
+            - id: b157804d-048d-4d45-9c49-2a8f7b6af095
+              pql: >
+                CASE
+
+                WHEN  PU_COUNT_DISTINCT(
+                             DOMAIN_TABLE("o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog"/* , "o_celonis_PurchaseOrderLine"."Custom_ClusterMateriales" */),
+
+                 CASE WHEN "o_celonis_PurchaseOrderLine"."Custom_Clusterlog" != 'SIN_CLASIFICAR'
+                         THEN  FILTER_TO_NULL("o_celonis_PurchaseOrderLine"."Id")
+                         ELSE NULL
+                    END
+                           )  > 5
+                      AND PU_COUNT_DISTINCT(
+                             DOMAIN_TABLE("o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog"/* , "o_celonis_PurchaseOrderLine"."Custom_ClusterMateriales" */),
+                            CONCAT(
+                        TO_STRING(YEAR("o_celonis_PurchaseOrderLine"."CreationTime")),
+                        TO_STRING(MONTH("o_celonis_PurchaseOrderLine"."CreationTime"))
+                    )
+                           ) > 2
+                THEN 'Descripciones que se pueden negociar'
+
+                ELSE 'No se pueden negociar'
+
+                END
+              unit: ""
+              format: ""
+              columnType: string
+              aggregation: false
+              description: ""
+              displayName: Negociar/No Negociar
+              shortDisplayName: ""
+            - id: 2eae5136-1d9d-497e-b6d8-461eecdb2ad9
+              pql: |
+                KPI("cantidad_de_po")
+              columnType: int
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: cantidad_de_po
+                type: KPI
+                columnType: int
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: c18e78bf-653b-4e42-8c29-bd7c105ee5fb
+          shortDisplayName: ""
+      additionalKpis: []
+      colorRuleField: b157804d-048d-4d45-9c49-2a8f7b6af095
+    filters: []
+  - id: bar-chart-d5f83fef-317c-4ce4-9cdc-12fa8eedd1ec
+    type: bar-chart
+    settings:
+      name: "Monto (USD) con posible negociación "
+      visuals:
+        - id: 034a60ba-99d7-4936-a188-664b4ab71018
+          mark:
+            type: bar
+          order: 100
+          encodings:
+            x:
+              stack:
+                - kpi: 1224f718-46c0-484c-bb57-62a696bab109
+            y:
+              type: ordinal
+              field:
+                - d85113e4-d04b-4094-95a1-4db979102b21
+            color:
+              rule: 80f7f659-bd50-417f-9a47-796bf1ee9434
+              field: d85113e4-d04b-4094-95a1-4db979102b21
+      dataSources:
+        - id: 9c16ab82-d375-4911-9783-b03dc890998a
+          filters:
+            - pql: cluster_logistica
+              isReferenced: true
+          attributes:
+            - id: d85113e4-d04b-4094-95a1-4db979102b21
+              pql: >
+                CASE
+
+                WHEN PU_COUNT_DISTINCT(
+                             DOMAIN_TABLE("o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog"/* , "o_celonis_PurchaseOrderLine"."Custom_ClusterMateriales" */),
+
+                 CASE WHEN "o_celonis_PurchaseOrderLine"."Custom_Clusterlog" != 'SIN_CLASIFICAR'
+                         THEN  FILTER_TO_NULL("o_celonis_PurchaseOrderLine"."Id")
+                         ELSE NULL
+                    END
+                           )  > 5
+                      AND PU_COUNT_DISTINCT(
+                             DOMAIN_TABLE("o_celonis_PurchaseOrderLine"."Custom_ClusterIdLog"/* , "o_celonis_PurchaseOrderLine"."Custom_ClusterMateriales" */),
+                            CONCAT(
+                        TO_STRING(YEAR("o_celonis_PurchaseOrderLine"."CreationTime")),
+                        TO_STRING(MONTH("o_celonis_PurchaseOrderLine"."CreationTime"))
+                    )
+                           ) > 2
+                THEN 'Descripciones que se pueden negociar'
+
+                ELSE 'No se pueden negociar'
+
+                END
+              unit: ""
+              format: ""
+              columnType: string
+              aggregation: false
+              description: ""
+              displayName: ":"
+              shortDisplayName: ""
+            - id: 1224f718-46c0-484c-bb57-62a696bab109
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: gasto_total_usd
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: 9c16ab82-d375-4911-9783-b03dc890998a
+          shortDisplayName: ""
+      interactions:
+        scrolling: true
+    filters: []
+  - id: button-495d6ff9-1aab-4de6-ab2b-62e0921286b3
+    type: button
+    settings:
+      label: Investigar con agreement
+      onClick:
+        openView:
+          viewKey: con-agreement-po-logistica
+          variables: []
+          syncFilters: forward-only
+          openInSideOverlay: false
+      variant: primary
+    tools:
+      - id: action-tool
+        settings:
+          actions: []
+    filters: []
+  - id: columns-line-chart-dc5da9e6-87c2-471c-9afe-562a7f6d841e
+    type: columns-line-chart
+    settings:
+      visuals:
+        - id: 2acb3a98-85c4-4b21-8ac5-c2cf38e5571a
+          mark:
+            type: bar
+            color: PRIMARY_10
+            orientation: vertical
+          order: 100
+          encodings:
+            x:
+              field:
+                - 7b638876-b6f2-4546-afad-baa0bd62b2d3
+            y:
+              axis:
+                hide: false
+              field: bd50fdfe-ea87-4ada-bb5b-63a87462caba
+        - id: cc1d796a-9779-4629-87a8-1dfddc08b7b5
+          mark:
+            type: line
+            point: false
+            orientation: vertical
+          order: 200
+          encodings:
+            x:
+              field:
+                - 7b638876-b6f2-4546-afad-baa0bd62b2d3
+            y:
+              axis:
+                hide: false
+                position: right
+              field: 6d890114-2f32-4e2e-b455-030eb3bc891c
+      dataSources:
+        - id: f5158125-fb3b-4db2-8fc5-e771d701901f
+          filters:
+            - pql: |-
+                /* FILTER "o_custom_Receipts"."CreationDate" BETWEEN {d '2025-01-01 00:00:00'} AND {d '2025-12-31 23:59:59'} */
+
+                FILTER PU_LAST("o_celonis_PurchaseOrderLine","o_custom_Receipts"."CreationDate") >= {d '2025-01-01 00:00:00'}
+              isReferenced: false
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: 7b638876-b6f2-4546-afad-baa0bd62b2d3
+              pql: >
+                ROUND_MONTH (PU_LAST ("o_celonis_PurchaseOrderLine",
+                "o_custom_Receipts"."CreationDate"))
+
+
+                --ROUND_MONTH ("o_custom_Receipts"."CreationDate")
+              unit: ""
+              format: "%Y-%m"
+              columnType: date
+              aggregation: false
+              description: ""
+              displayName: Mes
+              shortDisplayName: ""
+            - id: bd50fdfe-ea87-4ada-bb5b-63a87462caba
+              pql: |
+                COUNT (DISTINCT "o_celonis_PurchaseOrderLine"."Id")
+              unit: ""
+              format: ""
+              columnType: int
+              aggregation: true
+              description: ""
+              displayName: Cantidad de POL
+              shortDisplayName: ""
+            - id: 6d890114-2f32-4e2e-b455-030eb3bc891c
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: gasto_total_usd
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: f5158125-fb3b-4db2-8fc5-e771d701901f
+          shortDisplayName: ""
+      interactions:
+        scrolling: false
+    filters: []
+  - id: kpi-list-8e0a7484-e523-4467-b8ee-b329c319db27
+    type: kpi-list
+    settings:
+      data:
+        kpis:
+          - id: 8e3506a0-7260-4aa9-8a5a-b16d0063c866
+            kpi: 1fec2830-cf3e-469b-a565-1fe5e545284c.c8328914-2bef-480d-929a-bbee2d36780f
+            show: true
+            order: 100
+      dataSources:
+        - id: 1fec2830-cf3e-469b-a565-1fe5e545284c
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: c8328914-2bef-480d-929a-bbee2d36780f
+              pql: |
+                KPI("ahorro_posible_agreement_cluster_")
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: ahorro_posible_agreement_cluster_
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: 1fec2830-cf3e-469b-a565-1fe5e545284c
+          shortDisplayName: ""
+    filters: []
+  - id: kpi-list-fc90f9c7-6f71-40a4-9d7a-43e05fa2d10a
+    type: kpi-list
+    settings:
+      data:
+        kpis:
+          - id: fbb74c09-bee1-4f7d-bd13-6ce479d1fde2
+            kpi: b903fc5e-731b-4481-a8da-8ec1d43ed092.305d209c-624c-45ef-b08e-9b6fdde4c519
+            show: true
+            order: 100
+          - id: d5068875-6a1f-4418-b71c-c49082560b13
+            kpi: f59aa1e6-6d99-417e-940d-bf247f65d8ee.0b02c538-c178-4606-99ab-601b06fba3f3
+            show: true
+            order: 200
+          - id: 0f93a245-8833-4697-b3dc-993e0c1bdef7
+            kpi: 960bae77-81ff-477c-b55d-bc87c98d7b01.0ffbfa3f-6ef9-4bb7-a7a9-3c0db0ddc451
+            show: true
+            order: 300
+      dataSources:
+        - id: 960bae77-81ff-477c-b55d-bc87c98d7b01
+          filters:
+            - pql: filtro_mro_free_text_
+              isReferenced: true
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: 0ffbfa3f-6ef9-4bb7-a7a9-3c0db0ddc451
+              pql: >
+                COUNT(CASE
+
+                WHEN CURRENCY_CONVERT ('USD',
+                          "o_celonis_PurchaseOrderLine"."Currency",
+                           COALESCE (PU_SUM("o_celonis_PurchaseOrderLine","o_custom_Receipts"."Amount"),0),
+                          COALESCE( "o_celonis_PurchaseOrderLine"."CreationTime", TODAY()),
+                          "o_celonis_CurrencyConversion")
+                 > 1000
+                THEN "o_celonis_PurchaseOrderLine"."Id"
+
+                END)
+
+                /
+
+                COUNT (DISTINCT "o_celonis_PurchaseOrderLine"."Id")
+              unit: ""
+              format: ",.2%"
+              columnType: float
+              aggregation: true
+              description: ""
+              displayName: "% de POL > 1k USD"
+              shortDisplayName: ""
+          description: ""
+          displayName: 960bae77-81ff-477c-b55d-bc87c98d7b01
+          shortDisplayName: ""
+        - id: b903fc5e-731b-4481-a8da-8ec1d43ed092
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: 305d209c-624c-45ef-b08e-9b6fdde4c519
+              pql: |
+                COUNT (DISTINCT "o_celonis_PurchaseOrderLine"."Id")
+              unit: ""
+              format: ",.3~s"
+              columnType: int
+              aggregation: true
+              description: ""
+              displayName: Cantidad POL FT
+              shortDisplayName: ""
+          description: ""
+          displayName: b903fc5e-731b-4481-a8da-8ec1d43ed092
+          shortDisplayName: ""
+        - id: f59aa1e6-6d99-417e-940d-bf247f65d8ee
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: 0b02c538-c178-4606-99ab-601b06fba3f3
+              pql: >
+                COUNT(CASE
+
+                WHEN CURRENCY_CONVERT ('USD',
+                          "o_celonis_PurchaseOrderLine"."Currency",
+                           COALESCE (PU_SUM("o_celonis_PurchaseOrderLine","o_custom_Receipts"."Amount"),0),
+                          COALESCE( "o_celonis_PurchaseOrderLine"."CreationTime", TODAY()),
+                          "o_celonis_CurrencyConversion")
+                 > 1000
+                THEN "o_celonis_PurchaseOrderLine"."Id"
+
+                END)
+              unit: ""
+              format: ",.3~s"
+              columnType: int
+              aggregation: true
+              description: ""
+              displayName: Cantidad POL > 1k USD
+              shortDisplayName: ""
+          description: ""
+          displayName: f59aa1e6-6d99-417e-940d-bf247f65d8ee
+          shortDisplayName: ""
+      interactions:
+        filteredByUserFilters: true
+        filteredByPredefinedFilters: true
+    filters: []
+  - id: kpi-list-855e26a6-e87d-4de2-9f0d-f3397050752b
+    type: kpi-list
+    settings:
+      data:
+        kpis:
+          - id: 931aa880-09a2-4b0c-aa94-c6823b6cf718
+            kpi: c379355f-aeab-478c-a06f-4ce3c48881a9.92d1ea2d-a0e1-43a5-99cc-20f474fcd119
+            show: true
+            order: 100
+          - id: e21e4f1f-c200-422b-9c52-94c6ede8be51
+            kpi: a5ad29b8-fe19-4bd5-9be4-090f560a1f87.95b9fdd7-be74-4300-a606-78d1e0287df4
+            show: true
+            order: 200
+          - id: 80319798-0778-4035-90eb-479e192ac662
+            kpi: 7c18ffff-4201-4b92-818c-6a7709ef621c.bd3d2c00-9175-4f09-a5cf-ad15640f1f90
+            show: true
+            order: 300
+          - id: 29b8f1fe-44cd-46f5-967b-ec204ef48710
+            kpi: 2540a0c3-aa38-4b3b-a3a8-aafae4ae34de.d6ebf6f3-1ed6-41a4-8f67-dc4511f80c72
+            show: true
+            order: 400
+          - id: 8521525c-e8fd-44d0-9ed4-1ba0efc0b62c
+            kpi: 7b0d3d38-e17c-4018-8dea-043a9725a306.524eaa36-4db9-40fb-95d4-bccb924b8740
+            show: true
+            order: 500
+      options:
+        itemWidthMode: evenly
+        kpiValueFontSize: md
+      dataSources:
+        - id: c379355f-aeab-478c-a06f-4ce3c48881a9
+          attributes:
+            - id: 92d1ea2d-a0e1-43a5-99cc-20f474fcd119
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: gasto_total_usd_PO
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: c379355f-aeab-478c-a06f-4ce3c48881a9
+          shortDisplayName: ""
+        - id: a5ad29b8-fe19-4bd5-9be4-090f560a1f87
+          filters:
+            - pql: filtro_gasto_mro
+              isReferenced: true
+          attributes:
+            - id: 95b9fdd7-be74-4300-a606-78d1e0287df4
+              pql: "'Stage 2'\r
+
+                --KPI(\"gasto_total_usd_PO\")\n"
+              unit: ""
+              format: ",.3~s"
+              columnType: string
+              aggregation: true
+              description: ""
+              displayName: Gasto Total Logistica (USD)
+              shortDisplayName: ""
+          description: ""
+          displayName: a5ad29b8-fe19-4bd5-9be4-090f560a1f87
+          shortDisplayName: ""
+        - id: 7c18ffff-4201-4b92-818c-6a7709ef621c
+          attributes:
+            - id: bd3d2c00-9175-4f09-a5cf-ad15640f1f90
+              pql: |
+                'Stage 2'
+              unit: ""
+              format: ",.2%"
+              columnType: string
+              aggregation: true
+              description: ""
+              displayName: "% Gasto Total Logistica"
+              shortDisplayName: ""
+          description: ""
+          displayName: 7c18ffff-4201-4b92-818c-6a7709ef621c
+          shortDisplayName: ""
+        - id: 2540a0c3-aa38-4b3b-a3a8-aafae4ae34de
+          filters:
+            - pql: logistica
+              isReferenced: true
+          attributes:
+            - id: d6ebf6f3-1ed6-41a4-8f67-dc4511f80c72
+              pql: |
+                KPI("gasto_total_usd_PO")
+              format: ",.3~s"
+              columnType: float
+              aggregation: true
+              description: ""
+              referencedEntity:
+                id: gasto_total_usd_PO
+                type: KPI
+                columnType: float
+              shortDisplayName: ""
+              hasKnowledgeSyncDisplayChanges: true
+          description: ""
+          displayName: 2540a0c3-aa38-4b3b-a3a8-aafae4ae34de
+          shortDisplayName: ""
+        - id: 7b0d3d38-e17c-4018-8dea-043a9725a306
+          attributes:
+            - id: 524eaa36-4db9-40fb-95d4-bccb924b8740
+              pql: |
+                'Stage 2'
+              unit: ""
+              format: .0%
+              columnType: string
+              aggregation: true
+              description: ""
+              displayName: "% Gasto Logistica FT"
+              shortDisplayName: ""
+          description: ""
+          displayName: 7b0d3d38-e17c-4018-8dea-043a9725a306
+          shortDisplayName: ""
+    filters: []
+filters:
+  - id: 12661999-5737-4eec-a0ce-f6242a635921
+    pql: FILTER
+      PU_LAST("o_celonis_PurchaseOrderLine","o_custom_Receipts"."CreationDate")
+      >= {d '2025-01-01 00:00:00'}
+    name: Fecha recibo (2025-2026)
+    visible: false
+    editable: true
+    customPql: true
+  - id: 52f7710c-f91f-42b9-8305-cd9c4a8d6f4c
+    pql: >-
+
+      FILTER "o_celonis_PurchaseOrderLine"."Custom_CompanyCodeText" IN (
+      'MXBAR','MXBIM' );
+    name: MXBAR-MXBIM
+    visible: false
+    editable: true
+    customPql: true
+asides:
+  - id: 9bab51aa-23fc-4a0a-8b11-5cc551cce753
+    components:
+      - id: date-range-2b0a0479-a09c-42fa-9718-e48dbb95c03c
+        type: date-range
+        settings:
+          mode: double
+          label: Fecha creación PO Line
+          dataSources:
+            - id: a9b477d2-34f3-458d-8f58-4d7c0678d561
+              attributes:
+                - id: b15cf83e-ba4b-4175-9cd2-cd1b84a068b8
+                  pql: |
+                    "o_celonis_PurchaseOrderLine"."CreationTime"
+                  columnType: date
+                  aggregation: false
+                  description: ""
+                  referencedEntity:
+                    id: O_CELONIS_PURCHASEORDERLINE.CREATIONTIME
+                    type: NATIVE_ATTRIBUTE
+                    columnType: date
+                  shortDisplayName: ""
+                  hasKnowledgeSyncDisplayChanges: true
+              description: ""
+              displayName: a9b477d2-34f3-458d-8f58-4d7c0678d561
+              shortDisplayName: ""
+          dateAttribute: a9b477d2-34f3-458d-8f58-4d7c0678d561.b15cf83e-ba4b-4175-9cd2-cd1b84a068b8
+          quickDateSelections: true
+        filters: []
+      - id: filter-dropdown-68517c5b-bbdd-40d0-a08b-3e4d98ad8757
+        type: filter-dropdown
+        settings:
+          attribute: 8be92347-fda2-4af7-9177-9d672395df24.87798260-8350-4797-83af-97d348290374
+          dataSources:
+            - id: 8be92347-fda2-4af7-9177-9d672395df24
+              attributes:
+                - id: 87798260-8350-4797-83af-97d348290374
+                  pql: |
+                    "o_celonis_PurchaseOrderLine"."Custom_CompanyCodeText"
+                  columnType: string
+                  aggregation: false
+                  description: ""
+                  displayName: Compañia
+                  referencedEntity:
+                    id: O_CELONIS_PURCHASEORDERLINE.CUSTOM_COMPANYCODETEXT
+                    type: NATIVE_ATTRIBUTE
+                    columnType: string
+                  shortDisplayName: ""
+                  hasKnowledgeSyncDisplayChanges: true
+              description: ""
+              displayName: 8be92347-fda2-4af7-9177-9d672395df24
+              shortDisplayName: ""
+          displayName: Compañia
+        filters: []
+      - id: filter-dropdown-ff8ad470-c744-4b27-8fe8-9d2e1c430011
+        type: filter-dropdown
+        settings:
+          attribute: 0e6a7c82-7c0f-443c-8a66-8861f618ff7d.ca73b339-c2bc-4838-baf5-06cbcef226cf
+          dataSources:
+            - id: 0e6a7c82-7c0f-443c-8a66-8861f618ff7d
+              attributes:
+                - id: ca73b339-c2bc-4838-baf5-06cbcef226cf
+                  pql: |
+                    "o_celonis_PurchaseOrderLine"."QuantityUnit"
+                  columnType: string
+                  aggregation: false
+                  description: ""
+                  displayName: Unidad en PO
+                  referencedEntity:
+                    id: O_CELONIS_PURCHASEORDERLINE.QUANTITYUNIT
+                    type: NATIVE_ATTRIBUTE
+                    columnType: string
+                  shortDisplayName: ""
+                  hasKnowledgeSyncDisplayChanges: true
+              description: ""
+              displayName: 0e6a7c82-7c0f-443c-8a66-8861f618ff7d
+              shortDisplayName: ""
+        filters: []
+      - id: quick-filters-388200c8-063d-42a9-8702-b02104bff1df
+        type: quick-filters
+        settings:
+          filters:
+            - id: d32708b9-fdbd-468c-939b-04b1dea8e575
+              order: 100
+              filter: ce4294c4-688d-40e7-85fc-112012031e3b
+          dataSources:
+            - id: ce4294c4-688d-40e7-85fc-112012031e3b
+              pql: ""
+              filters:
+                - id: 67e13ed9-5ea7-45bf-bfc1-43c8f02a5f42
+                  pql: FILTER "o_celonis_PurchaseOrderLine"."Custom_MaterialNumber" IS NULL
+                  displayName: Custom PQL
+                  isReferenced: false
+              displayName: Material is null
+        filters: []
+      - id: quick-filters-00fc1724-3ed0-4e02-86fe-45d46dd56a7a
+        type: quick-filters
+        settings:
+          filters:
+            - id: d32708b9-fdbd-468c-939b-04b1dea8e575
+              order: 100
+              filter: ce4294c4-688d-40e7-85fc-112012031e3b
+          dataSources:
+            - id: ce4294c4-688d-40e7-85fc-112012031e3b
+              pql: ""
+              filters:
+                - id: 25cc9aac-0489-4bb5-825e-09aa985b6cbc
+                  pql: FILTER "o_celonis_PurchaseOrderLine"."Custom_MaterialNumber" IS NOT NULL
+                  displayName: Custom PQL
+                  isReferenced: false
+              displayName: Material is null
+        filters: []
+      - id: filter-dropdown-bd1ac481-21d0-473e-a3d5-0f312d013da6
+        type: filter-dropdown
+        settings:
+          attribute: e519c81e-8764-4716-899f-cb0f84d2f999.8a28f79d-637c-4da0-aa50-01115c0ab0aa
+          dataSources:
+            - id: e519c81e-8764-4716-899f-cb0f84d2f999
+              attributes:
+                - id: 8a28f79d-637c-4da0-aa50-01115c0ab0aa
+                  pql: |
+                    "o_celonis_Plant"."custom_Code"
+                  columnType: string
+                  aggregation: false
+                  description: ""
+                  referencedEntity:
+                    id: O_CELONIS_PLANT.CUSTOM_CODE
+                    type: NATIVE_ATTRIBUTE
+                    columnType: string
+                  shortDisplayName: ""
+                  hasKnowledgeSyncDisplayChanges: true
+              description: ""
+              displayName: e519c81e-8764-4716-899f-cb0f84d2f999
+              shortDisplayName: ""
+        filters: []
+    grid:
+      elements:
+        - id: 411d1e28-20f5-4b4f-8e36-1834edf4cf64
+          componentId: date-range-2b0a0479-a09c-42fa-9718-e48dbb95c03c
+          position:
+            positionX: 1
+            positionY: 24
+            width: 1
+            height: 5
+        - id: 5b4fcedf-2fbf-46f0-bb7f-7d643c86e384
+          componentId: filter-dropdown-68517c5b-bbdd-40d0-a08b-3e4d98ad8757
+          position:
+            positionX: 1
+            positionY: 31
+            width: 1
+            height: 5
+        - id: 5fcf66b6-df99-4dfa-9803-7b0093a39b8c
+          componentId: filter-dropdown-ff8ad470-c744-4b27-8fe8-9d2e1c430011
+          position:
+            positionX: 1
+            positionY: 18
+            width: 1
+            height: 5
+        - id: 78775f8a-b376-40d5-a260-9c1549761847
+          componentId: quick-filters-388200c8-063d-42a9-8702-b02104bff1df
+          position:
+            positionX: 1
+            positionY: 40
+            width: 1
+            height: 5
+        - id: 4f6b0f0d-3f68-49af-a2e3-0eeb01fa0374
+          componentId: quick-filters-00fc1724-3ed0-4e02-86fe-45d46dd56a7a
+          position:
+            positionX: 1
+            positionY: 45
+            width: 1
+            height: 5
+        - id: 8fa4debb-62f0-4ec5-ae45-ebbf9a680182
+          componentId: filter-dropdown-bd1ac481-21d0-473e-a3d5-0f312d013da6
+          position:
+            positionX: 1
+            positionY: 10
+            width: 1
+            height: 5
+      mode: scrollable
+      height: 744
+    active: true

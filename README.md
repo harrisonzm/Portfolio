@@ -25,7 +25,24 @@ GITHUB_ACTIONS=true npm run build
 GITHUB_ACTIONS=true npm run preview
 ```
 
-## Activar los mensajes a Gmail
+## Enviar con Gmail mediante la API
+
+La API de Node envía el formulario mediante SMTP de Gmail con Nodemailer. Requiere Node 22 o superior. Las credenciales se leen únicamente en el servidor; `.env` está excluido de Git.
+
+1. Copia `.env.example` a `.env` si todavía no existe.
+2. Pon una contraseña de aplicación nueva en `EMAIL_PASSWORD`. No reutilices la contraseña compartida en el chat. Gmail requiere verificación en dos pasos para generar estas contraseñas: [documentación de Nodemailer](https://nodemailer.com/guides/using-gmail).
+3. Ejecuta `npm run dev:server` y, en otra terminal, `npm run dev`.
+4. Envía un mensaje desde el formulario para comprobar la entrega real.
+
+Para producción, aloja la API con `npm run start:server`, configura `EMAIL_USER`, `EMAIL_PASSWORD`, `PORT` y `CONTACT_ORIGINS` en ese servidor. `CONTACT_ORIGINS` admite varios orígenes separados por comas, sin rutas (por ejemplo `https://harrisonzm.github.io`). Compila el frontend con `VITE_CONTACT_ENDPOINT=https://tu-api.example/api/contact`. GitHub Pages no ejecuta esta API. El límite de cinco solicitudes por quince minutos se aplica por IP y vive en memoria; si usas un proxy o varias instancias, adapta el proxy de confianza y el almacenamiento del límite antes de escalar.
+
+Las pruebas `npm run test:contact` simulan SMTP y no envían correos. La recepción real debe comprobarse con la nueva contraseña y la API desplegada.
+
+## Usar FormSubmit en el sitio estático
+
+Si compilas sin `VITE_CONTACT_ENDPOINT`, el formulario utiliza FormSubmit. Para mantener este comportamiento en GitHub Pages, no definas esa variable durante el build.
+
+
 
 El formulario envía nombre, correo, motivo y mensaje a `harrison.zmontoya@gmail.com` mediante [FormSubmit](https://formsubmit.co/documentation). Funciona en GitHub Pages sin almacenar claves ni una contraseña de Gmail en el frontend.
 

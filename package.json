@@ -7,9 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "lint": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:server": "node --watch server/index.mjs",
+    "start:server": "node server/index.mjs",
+    "test:contact": "node --test server/contact.test.mjs"
   },
   "dependencies": {
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "nodemailer": "^10.0.13",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
